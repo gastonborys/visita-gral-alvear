@@ -1,0 +1,22 @@
+<app-top-bar></app-top-bar>
+
+<ion-content>
+    <div class="contenido">
+        <h4><b>Recorridos</b></h4>
+
+        <ion-list>
+            <div *ngFor="let item of items" style="margin-top: -60px; margin-bottom: 30px;">
+                <h5 style="float: left; position: relative; color: #000; background-color: #fff; top: 46px; left: 5px; padding: 5px; border-radius: 4px;"><b>{{ item.titulo }}</b></h5>
+                <img src="{{ imageURL }}/{{ item.imagen }}?alt=media" style="border-radius: 2px;">
+                <br>                        
+                <p><b>Duración:</b> {{ item.duracion }}</p>
+                <p>{{ item.texto }}</p>
+                <hr>
+
+            </div>
+        </ion-list>
+
+    </div>
+</ion-content>
+
+<app-bottom-bar></app-bottom-bar>

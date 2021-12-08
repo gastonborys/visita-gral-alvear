@@ -1,0 +1,39 @@
+<ion-header>
+    <app-top-bar></app-top-bar>
+    <ion-toolbar class="secundary">
+        <ion-buttons slot="start">
+            <ion-button>
+                <ion-icon slot="start" name="notifications-outline"></ion-icon>
+                <ion-label>Emergencia</ion-label>
+            </ion-button>
+
+            <ion-button>
+                <ion-icon slot="start" name="search"></ion-icon>
+                <ion-label>Buscar</ion-label>
+            </ion-button>
+
+            <ion-button [routerLink]="['/mapa']">
+                <ion-icon slot="start" name="map"></ion-icon>
+                <ion-label>Mapa</ion-label>
+            </ion-button>
+
+        </ion-buttons>
+    </ion-toolbar>
+
+    <ion-img [src]="main_img"></ion-img>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-list>
+        <ion-item *ngFor="let item of items" [routerLink]="['/secciones/'+item.id]">
+            <ion-avatar slot="start">
+                <ion-img src="{{ imageURL }}/{{ item.imagen }}?alt=media"></ion-img>
+            </ion-avatar>
+            <ion-label>
+                {{ item.seccion }}
+            </ion-label>
+        </ion-item> 
+    </ion-list>   
+</ion-content>
+
+<app-bottom-bar></app-bottom-bar>

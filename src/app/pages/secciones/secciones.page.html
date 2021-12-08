@@ -1,0 +1,18 @@
+<app-top-bar></app-top-bar>
+
+<ion-content>
+    <ion-list>
+        <div *ngFor="let item of data">
+            <div class="card" style="width: 90%; margin: 5%;">
+                <div class="card-header">
+                    <img src="{{ imageURL }}/{{ item.imagen }}?alt=media" class="card-img-top" alt="...">
+                </div>
+                <div class="card-body" style="margin-top: -15px !important;">
+                    <p class="card-text mt-0"><b>{{ item.titulo }}</b></p>
+                </div>
+            </div>
+        </div>
+    </ion-list>
+</ion-content>
+
+<app-bottom-bar></app-bottom-bar>

@@ -1,0 +1,35 @@
+<ion-footer>
+    <ion-toolbar>
+        <ion-tabs>
+            <ion-tab-bar slot="bottom">
+                <ion-tab-button [routerLink]="['/home']">
+                    <ion-icon name="book"></ion-icon>
+                    <ion-label>Guía</ion-label>
+                </ion-tab-button>
+
+                <ion-tab-button [routerLink]="['/recorridos']">
+                    <ion-icon name="compass"></ion-icon>
+                    <ion-label>Recorridos</ion-label>
+                </ion-tab-button>
+
+                <ion-tab-button [routerLink]="['/comercios']" routerDirection="root">
+                    <ion-icon name="albums-outline"></ion-icon>
+                    <ion-label>Comercios</ion-label>
+                </ion-tab-button>
+
+
+                <ion-tab-button [routerLink]="['/info']">
+                    <ion-icon name="information-circle"></ion-icon>
+                    <ion-label>Info</ion-label>
+                </ion-tab-button>
+
+                <ion-tab-button [routerLink]="['/mas']">
+                    <ion-icon name="add-circle"></ion-icon>
+                    <ion-label>Más</ion-label>
+                </ion-tab-button>
+            </ion-tab-bar>
+        </ion-tabs>
+    </ion-toolbar>
+</ion-footer>
+
+

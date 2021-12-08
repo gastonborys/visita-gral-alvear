@@ -1,0 +1,16 @@
+<app-top-bar></app-top-bar>
+
+<ion-content> 
+        <ion-title style="margin-top: 5%;"><b>Comercios</b></ion-title>
+        
+        <ion-list>
+            <ion-item *ngFor="let item of items">
+                <ion-avatar slot="start">
+                    <ion-img src="{{ imageURL }}/{{ item.icono }}?alt=media"></ion-img>
+                </ion-avatar>
+                <ion-label>{{ item.rubro }}</ion-label>
+            </ion-item>
+        </ion-list>
+</ion-content>
+
+<app-bottom-bar></app-bottom-bar>
