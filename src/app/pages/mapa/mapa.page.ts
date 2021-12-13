@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Loader } from "@googlemaps/js-api-loader"
+import { environment } from '../../../environments/environment';
 
 
 @Component({
@@ -31,7 +32,7 @@ export class MapaPage implements OnInit {
         ];
 
         let loader = new Loader({
-            apiKey: ''
+            apiKey: environment.firebaseConfig.apiKey
         });
 
         loader.load().then(()  => {
