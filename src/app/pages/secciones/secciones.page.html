@@ -1,7 +1,7 @@
 <app-top-bar></app-top-bar>
 
 <ion-content>
-    <ion-list>
+    <ion-list *ngIf="data && data.length > 0; else noData">
         <div *ngFor="let item of data">
             <div class="card" style="width: 90%; margin: 5%;">
                 <div class="card-header">
@@ -13,6 +13,9 @@
             </div>
         </div>
     </ion-list>
+    <ng-template #noData>
+        <p>Esta sección no tiene datos cargados.</p>
+    </ng-template>
 </ion-content>
 
 <app-bottom-bar></app-bottom-bar>
