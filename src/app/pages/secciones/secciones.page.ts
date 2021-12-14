@@ -12,21 +12,23 @@ import { Urls } from '../../services/global';
 export class SeccionesPage implements OnInit {
 
     public id:          string;
-    public data:        SeccionItem;
+    public data:        SeccionItem[];
     public imageURL:    string;
+
     constructor(
         private _route: ActivatedRoute,
         private _seccionesSrv: SeccionesService,
     ) 
     {
+        this.imageURL   = Urls.img_url;
+    }
 
-        this.imageURL = Urls.img_url;
-
+    ngOnInit(): void {
         this._route.params.subscribe(params => {
             let uid = params['id'];
             if (uid == undefined)
             {
-                this.id = "0";
+                this.id = "0";                
             }
             else
             {
@@ -34,16 +36,13 @@ export class SeccionesPage implements OnInit {
                 this.loadData(this.id);
             }
         });
-    }
-
-    ngOnInit(): void {
-
-    }
-
+    }  
+ 
     loadData(id: string): void{
         this._seccionesSrv.getSeccionesItems(id).subscribe(
             response => {
                 this.data = response;
+                
             },
             error => {
                 console.log(error);
