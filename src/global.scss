@@ -40,9 +40,7 @@ ion-tab-button,
 ion-toolbar {--color: var(--c-text); --background: var(--c-primary);}
 ion-toolbar.secundary { --color: var(--c-text); --background: var(--c-accent); }
 
-button.current-pos{display: block; background-color: #FFF; width: 30px; height: 30px; border-radius: 15px;}
-
-.contenido{display: block; width: 90%; margin-left: 5%; margin-top: 5%;}
-.contenido .imagen{width: 100%;}
+button.current-pos{display: block; background-color: #FFF; width: 40px; height: 40px; right: 10px !important; border-radius: 2px;}
+button.current-pos ion-icon {font-size: 20px; font-weight: bold;}
 
 hr{background-color: #EEE;}

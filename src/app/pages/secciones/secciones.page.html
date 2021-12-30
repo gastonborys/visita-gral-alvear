@@ -1,9 +1,9 @@
 <app-top-bar></app-top-bar>
 
-<ion-content>
+<ion-content class="ion-padding">
     <ion-list *ngIf="data && data.length > 0; else noData">
         <div *ngFor="let item of data">
-            <div class="card" style="width: 90%; margin: 5%;">
+            <div class="card">
                 <div class="card-header">
                     <img src="{{ imageURL }}/{{ item.imagen }}?alt=media" class="card-img-top" alt="...">
                 </div>
