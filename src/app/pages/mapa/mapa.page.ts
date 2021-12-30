@@ -11,7 +11,6 @@ import { environment } from '../../../environments/environment';
 
 export class MapaPage implements OnInit {
 
-
     constructor() { 
 
     }
@@ -26,7 +25,7 @@ export class MapaPage implements OnInit {
 
     loadMap(): void {
         const locations = [
-            { titulo: "Item 1", lat: -34.978041, lng: -67.689916 },
+            { titulo: "<b>Item 1</b><p>Abierto de 9 a 13hs y de 17 a 21hs</p>", lat: -34.978041, lng: -67.689916 },
             { titulo: "Item 2", lat: -34.978109, lng: -67.696259 },
             { titulo: "Item 3", lat: -34.975930, lng: -67.689386 },
         ];
@@ -90,47 +89,77 @@ export class MapaPage implements OnInit {
 
             const locationButton = document.createElement("button");
 
-                locationButton.innerHTML = '<ion-icon name="locate"></ion-icon>';
+            locationButton.innerHTML = '<ion-icon name="locate"></ion-icon>';
             locationButton.classList.add("current-pos");
 
             map.controls[google.maps.ControlPosition.RIGHT_CENTER].push(locationButton);
 
-            locationButton.addEventListener("click", () => {
-                // Try HTML5 geolocation.
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(
-                        (position: GeolocationPosition) => {
-                            const pos = {
-                                lat: position.coords.latitude,
-                                lng: position.coords.longitude,
-                            };
+            let first: boolean = true;
+            let marker: google.maps.Marker;
 
-                            let marker = new google.maps.Marker({
-                                position: pos,
-                                map,
-                            });
- 
-                            map.setCenter(pos);
+            setInterval(function(){
+                if (navigator.geolocation) 
+                {
+                    let posIcon: any = {
+                        path: google.maps.SymbolPath.CIRCLE,
+                        fillColor: "#005eb8",
+                        fillOpacity: 1,
+                        scale: 10,
+                        strokeColor: "#EEE",
+                        strokeWeight: 3
+                    };
+                        navigator.geolocation.getCurrentPosition(
 
-                            marker.addListener('click', () => {
-                                infoWindow.setContent("Posición Actual"),
-                                    infoWindow.open({
-                                        anchor: marker,
+                            (position: GeolocationPosition) => {
+                                const pos = {
+                                    lat: position.coords.latitude,
+                                    lng: position.coords.longitude,
+                                };
+                                if (marker != null)
+                                {
+                                    if (pos.lat != marker.getPosition().lat() && pos.lng != marker.getPosition().lng())
+                                    {
+                                        marker.setMap(null);
+                                        marker = new google.maps.Marker({
+                                            icon: posIcon,
+                                            position: pos,
+                                            map,
+                                        });
+                                    }
+
+                                }
+                                else
+                                {
+                                    marker = new google.maps.Marker({
+                                        icon: posIcon,
+                                        position: pos,
                                         map,
-                                        shouldFocus: false
                                     });
-                            });
+                                }
 
-                        },
-                        () => {
-                            console.log("error mapa");
-                        }
-                    );
+                                locationButton.addEventListener("click", () => {
+                                    map.setCenter(pos);
+                                });
+
+                            },
+                            () => {
+                                if (first)
+                                {
+                                    first = false;
+                                    console.log("error mapa");
+                                    alert ('Error al obtener la posición actual');
+                                }
+            
+                            }
+                        );
                 } else {
-                    // Browser doesn't support Geolocation
-                    console.log("browser doesn't support geolocation")    
+                    if (first)
+                    {
+                        first = false;
+                        alert ('El dispositivo no soporta la geolocalización.');
+                    }
                 }
-            });
+            }, 1000);
         });
 
 
